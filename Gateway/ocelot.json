@@ -1,0 +1,257 @@
+{
+  "Routes": [
+    {
+      //ConsumerCatalog
+      //ConsumerController
+      "UpstreamPathTemplate": "/Consumer",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Consumer"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Consumer/{id}",
+      "UpstreamHttpMethod": [ "Get", "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Consumer{id}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Consumer/Units/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Consumer/Units/{id}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Consumer/Consumes/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Consumer/Consumes/{id}"
+    },
+    //UnitController
+    {
+      "UpstreamPathTemplate": "/Unit",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Unit"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Unit/{id}",
+      "UpstreamHttpMethod": [ "Delete", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Unit/{id}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Unit/Issues/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Unit/Issues/{id}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Unit/Consumes/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/Unit/Consumes/{id}"
+    },
+    //energyConsumeController
+    {
+      "UpstreamPathTemplate": "/energyConsume",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/energyConsume"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/energyConsume/{id}",
+      "UpstreamHttpMethod": [ "Delete" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8000
+        }
+      ],
+      "DownstreamPathTemplate": "/consumerapi/enegryConsume/{id}"
+    },
+    //EmployeeCatalog
+    //TeamController
+    {
+      "UpstreamPathTemplate": "/Team}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Team"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Team/{id}",
+      "UpstreamHttpMethod": [ "Delete", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Team/{id}"
+    },
+    //IssueController
+    {
+      "UpstreamPathTemplate": "/Issue}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Issue"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Issue/{id}",
+      "UpstreamHttpMethod": [ "Delete", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Issue/{id}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Issue/{teamId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Issue/{teamId}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Issue/{unitId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Issue/{unitId}"
+    },
+    //EmployeeController
+    {
+      "UpstreamPathTemplate": "/Employee}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Employee"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Employee/{id}",
+      "UpstreamHttpMethod": [ "Delete", "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Employee/{id}"
+    },
+    //
+    {
+      "UpstreamPathTemplate": "/Employee/{teamId}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8001
+        }
+      ],
+      "DownstreamPathTemplate": "/employeeapi/Employee/{teamId}"
+    }
+    //
+  ], 
+  "GlobalConfiguration": {
+    "BaseUrl": "http://locahost:800"
+  }
+}
