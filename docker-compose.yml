@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  gateway:
+    image: ${DOCKER_REGISTRY-}gateway
+    build:
+      context: .
+      dockerfile: Gateway/Dockerfile
+
+  employeeapi:
+    image: ${DOCKER_REGISTRY-}employeeapi
+    build:
+      context: .
+      dockerfile: EmployeeAPI/Dockerfile
+
+
+  consumerapi:
+    image: ${DOCKER_REGISTRY-}consumerapi
+    build:
+      context: .
+      dockerfile: ConsumerAPI/Dockerfile
+
+
+  aggregator:
+    image: ${DOCKER_REGISTRY-}aggregator
+    build:
+      context: .
+      dockerfile: Aggregator/Dockerfile
+
