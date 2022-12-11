@@ -3,24 +3,39 @@ version: '3.4'
 services:
   gateway:
     image: ${DOCKER_REGISTRY-}gateway
+    environment:
     build:
       context: .
       dockerfile: Gateway/Dockerfile
     depends_on:
      - employeeapi
      - consumerapi
+     ports:
+     - "8004:80"
+     - "9004:443"
 
   employeeapi:
     image: ${DOCKER_REGISTRY-}employeeapi
+    environment:
+     - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     build:
       context: .
       dockerfile: EmployeeAPI/Dockerfile
+    ports:
+     - "8001:80"
+     - "9001:443"
       
   consumerapi:
     image: ${DOCKER_REGISTRY-}consumerapi
+    environment:
+     - "CacheSettings:ConnectionString=inmemorydb:6379"
+     - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     build:
       context: .
       dockerfile: ConsumerAPI/Dockerfile
+    ports:
+     - "8000:80"
+     - "9000:443"
 
   aggregator:
     image: ${DOCKER_REGISTRY-}aggregator
@@ -31,7 +46,18 @@ services:
      - employeeapi
      - consumerapi
      - gateway
+    ports:
+     - "8003:80"
+     - "9003:443"
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
+    ports:
+     - "5672:5672"
+     - "15672:15672"
+     
 
+  inmemorydb:
+    image: redis:alpine
+    ports:
+     - "6379:6379"

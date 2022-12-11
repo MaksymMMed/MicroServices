@@ -1,9 +1,9 @@
 ﻿using Microsoft.OpenApi.Models;
 using Infrastructure.Persistense;
 using MediatR;
-using FluentValidation.AspNetCore;
 using Apllication.Teams.Queries.GetAllTeams;
 using Rabbit.Producer;
+using MassTransit;
 
 namespace EmployeeAPI
 {
@@ -16,7 +16,7 @@ namespace EmployeeAPI
 
         public void ConfigureServices(IServiceCollection Services)
         {
-            Services.AddTransient<IMessageProducer,RabbitMQProducer>();
+            //Services.AddTransient<IMessageProducer,RabbitMQProducer>();
             Services.AddPersistence(Configuration);
             Services.AddControllers();
             Services.AddEndpointsApiExplorer();
@@ -27,8 +27,13 @@ namespace EmployeeAPI
                     Title = "EmployeeCatalog.API",
                     Version = "v1"
                 });
-
             });
+            Services.AddMassTransit(config => {
+                config.UsingRabbitMq((ctx, cfg) => {
+                    cfg.Host(Configuration.GetValue<string>("EventBusSettings:HostAddress"));
+                });
+            });
+            Services.AddMassTransitHostedService();
             Services.AddHttpClient();
             Services.AddMediatR(typeof(GetAllTeamsQuery));
         }

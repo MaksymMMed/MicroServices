@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Repositories.Interfaces;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace DAL.Repositories.Realization
 {
     public class IssueRepository : GenericRepository<Issue>,IIssueRepository
     {
-        public IssueRepository(UnitContext databaseContext, IMemoryCache memoryCache) : base(databaseContext, memoryCache)
+        public IssueRepository(UnitContext databaseContext, IDistributedCache memoryCache) : base(databaseContext, memoryCache)
         {
         }
 

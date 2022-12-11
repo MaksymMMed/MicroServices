@@ -16,31 +16,24 @@ public class Startup
     public Startup(IConfiguration configuration) =>
             Configuration = configuration;
 
-        public IConfiguration Configuration { get; }
+    public IConfiguration Configuration { get; }
 
     public void ConfigureServices(IServiceCollection Services)
     {
         Services.AddDbContext<UnitContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("UnitContext")));
 
-        Services.AddMemoryCache();
-
-
-        
-
         Services.AddStackExchangeRedisCache(options =>
         {
             options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
         });
 
-
-        
-
-        Services.AddTransient<IMessageProducer,RabbitMQProducer>();
+        //Services.AddTransient<IMessageProducer,RabbitMQProducer>();
 
         Services.AddTransient<IConsumerRepository, ConsumerRepository>();
         Services.AddTransient<IUnitRepository, UnitRepository>();
         Services.AddTransient<IEnergyConsumeRepository, EnergyConsumeRepository>();
+        Services.AddTransient<IIssueRepository, IssueRepository>();
 
         Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
@@ -67,7 +60,7 @@ public class Startup
             config.AddConsumer<MessageConsumer>();
 
             config.UsingRabbitMq((ctx, cfg) => {
-                cfg.Host("amqp://guest:guest@localhost:5672");
+                cfg.Host(Configuration.GetValue<string>("EventBusSettings:HostAddress"));
                 cfg.ReceiveEndpoint("Queue", c => {
                     c.ConfigureConsumer<MessageConsumer>(ctx);
                 });

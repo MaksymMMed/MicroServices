@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.EventBus.Events;
 using Rabbit.Producer;
+using MassTransit;
 
 namespace Apllication.Issues.Commands.CreateIssue
 {
@@ -17,12 +18,13 @@ namespace Apllication.Issues.Commands.CreateIssue
     {
 
         private readonly IEmployeeContext Context;
-        private readonly IMessageProducer Producer;
+        //private readonly IMessageProducer Producer;
+        private readonly IPublishEndpoint Endpoint;
 
-        public CreateIssueHandler(IEmployeeContext _context,IMessageProducer _producer)
+        public CreateIssueHandler(IEmployeeContext context, IPublishEndpoint endpoint)
         {
-            Context = _context;
-            Producer = _producer;
+            Context = context;
+            Endpoint = endpoint;
         }
 
         public async Task<Issue> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
@@ -45,9 +47,10 @@ namespace Apllication.Issues.Commands.CreateIssue
                 Status = false,
                 UnitId = request.TeamId
             };
-            var _issue = issueEvent;
-            Producer.sendMessage(_issue);
-            //        
+            //Producer.sendMessage(_issue);
+            //
+            
+            await Endpoint.Publish(issueEvent);
                         
             await Context.Issue.AddAsync(issue);
             await Context.SaveChangesAsync(cancellationToken);
