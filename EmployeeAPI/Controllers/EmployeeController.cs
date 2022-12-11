@@ -11,7 +11,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace EmployeeAPI.Controllers
 {
-    [Route("employeeapi/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {

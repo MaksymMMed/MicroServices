@@ -16,7 +16,7 @@ namespace Aggregator.Services.Realizations
 
         public async Task<ConsumerModel> GetConsumerById(string id)
         {
-            var response = await client.GetAsync("/apiconsumer/Consumer/{"+id+"}");
+            var response = await client.GetAsync("/Consumer/{"+id+"}");
             return await response.ReadContentAs<ConsumerModel>();
     
         }

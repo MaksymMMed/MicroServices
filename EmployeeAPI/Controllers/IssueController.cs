@@ -6,18 +6,21 @@ using Apllication.Issues.Queries.GetIssuesByTeam;
 using Apllication.Issues.Queries.GetIssuesByUnit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Rabbit.Producer;
 
 namespace EmployeeAPI.Controllers
 {
-    [Route("employeeapi/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class IssueController : ControllerBase
     {
-        private IMediator mediator;
+        private readonly IMediator mediator;
+        private readonly IMessageProducer producer;
 
-        public IssueController(IMediator mediator)
+        public IssueController(IMediator mediator, IMessageProducer messageProducer)
         {
             this.mediator = mediator;
+            this.producer = messageProducer;
         }
 
         [HttpGet("{teamId}")]
@@ -26,6 +29,7 @@ namespace EmployeeAPI.Controllers
         public async Task<IActionResult> GetIssuesByTeamId(int teamId)
         {
             var teams = await mediator.Send(new GetIssuesByTeamQuery() { TeamId = teamId });
+
             if (teams == null)
             {
                 return NotFound();

@@ -14,12 +14,14 @@ namespace DAL.Repositories.UnitOfWork
         public UnitOfWork(UnitContext consumersContext,
             IConsumerRepository consumerRepository,
             IUnitRepository unitRepository,
-            IEnergyConsumeRepository energyConsume)
+            IEnergyConsumeRepository energyConsume,
+            IIssueRepository issueRepository)
         {
             this.consumersContext = consumersContext;
             this.consumerRepository = consumerRepository;
             this.unitRepository = unitRepository;
             this.energyConsumeRepository = energyConsume;
+            this.issueRepository = issueRepository;
         }
 
         public IConsumerRepository consumerRepository { get;}
@@ -27,6 +29,8 @@ namespace DAL.Repositories.UnitOfWork
         public IUnitRepository unitRepository { get; }
 
         public IEnergyConsumeRepository energyConsumeRepository { get; }
+
+        public IIssueRepository issueRepository { get; }
 
         public async Task SaveChangesAsync()
         {

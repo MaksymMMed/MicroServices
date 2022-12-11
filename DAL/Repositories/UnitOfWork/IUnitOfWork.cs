@@ -12,6 +12,7 @@ namespace DAL.Repositories.UnitOfWork
         IConsumerRepository consumerRepository { get; }
         IUnitRepository unitRepository { get; }
         IEnergyConsumeRepository energyConsumeRepository { get; }
+        IIssueRepository issueRepository { get; }
         Task SaveChangesAsync();
     }
 }

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeAPI.Controllers
 {
-    [Route("employeeapi/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {

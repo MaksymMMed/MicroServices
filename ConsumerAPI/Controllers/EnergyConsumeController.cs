@@ -9,7 +9,7 @@ using BLL.DTO.Request;
 
 namespace ConsumerAPI.Controllers
 {
-    [Route("consumerapi/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class energyConsumeController : ControllerBase
     {

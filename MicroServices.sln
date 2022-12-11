@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway", "Gateway\Gateway.
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7D2B14CE-229C-43BA-AEF2-355FF74359CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aggregator", "Aggregator\Aggregator.csproj", "{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "Aggregator\Aggregator.csproj", "{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabbit", "Rabbit\Rabbit.csproj", "{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{D4DC7A6C-81B5-490A-928D-AFD3DA521914} = {5177FAE6-F792-46B5-BA5E-4D2E44D04C7D}
 		{48E1343F-8824-4B2A-A925-0D759EE15EB2} = {A42E5D4F-C5C7-4353-85C2-714E58220017}
 		{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD} = {A42E5D4F-C5C7-4353-85C2-714E58220017}
+		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9} = {A42E5D4F-C5C7-4353-85C2-714E58220017}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AAB3E61-04A0-4198-B732-07AD97ED71D1}

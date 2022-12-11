@@ -10,6 +10,7 @@ WORKDIR /src
 COPY ["ConsumerAPI/ConsumerAPI.csproj", "ConsumerAPI/"]
 COPY ["BLL/BLL.csproj", "BLL/"]
 COPY ["DAL/DAL.csproj", "DAL/"]
+COPY ["Rabbit/Rabbit.csproj", "Rabbit/"]
 RUN dotnet restore "ConsumerAPI/ConsumerAPI.csproj"
 COPY . .
 WORKDIR "/src/ConsumerAPI"

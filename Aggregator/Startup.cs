@@ -15,9 +15,17 @@ namespace Aggregator
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Aggregator.API",
+                    Version = "v1"
+                });
 
+            });
             services.AddHttpClient<IConsumerService, ConsumerService>(c =>
-                c.BaseAddress = new Uri(Configuration["ApiSettings:CatalogUrl"]));
+                c.BaseAddress = new Uri(Configuration["ApiSettings:ConsumerUrl"]));
 
             services.AddControllers();
         }

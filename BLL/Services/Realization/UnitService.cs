@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.EventBus.Events;
+using AutoMapper;
 using BLL.DTO.Request;
 using BLL.DTO.Response;
 using BLL.Services.Interfaces;
@@ -6,6 +7,7 @@ using DAL.Entities;
 using DAL.Pagination;
 using DAL.Parameters;
 using DAL.Repositories.UnitOfWork;
+using Rabbit.Producer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace BLL.Services.Realization
     {
         IUnitOfWork UnitOfWork;
         IMapper mapper;
+        IMessageProducer Producer; 
 
         public UnitService(IUnitOfWork unitOfWork, IMapper mapper)
         {
@@ -33,6 +36,7 @@ namespace BLL.Services.Realization
 
         public async Task<IEnumerable<UnitResponse>> GetAsync()
         {
+
             var items = await UnitOfWork.unitRepository.GetAsync();
             return items.Select(mapper.Map<Unit, UnitResponse>);
         }
@@ -70,6 +74,8 @@ namespace BLL.Services.Realization
         public async Task InsertAsync(UnitRequest request)
         {
             var item = mapper.Map<UnitRequest, Unit>(request);
+            var eventIssue = mapper.Map<UnitRequest, IssueEvent>(request);
+            Producer.sendMessage(eventIssue);
             await UnitOfWork.unitRepository.InsertAsync(item);
             await UnitOfWork.SaveChangesAsync();
         }

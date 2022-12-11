@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using Application.EventBus.Events;
+using AutoMapper;
 using BLL.DTO.Request;
 using BLL.DTO.Response;
 using DAL.Entities;
@@ -32,12 +33,17 @@ namespace BLL.AutoMapperConfiguration
         {
             CreateMap<Issue,IssueResponse>();
         }
+        private void CreateIssueEventProfile()
+        {
+            CreateMap<IssueEvent, Issue>();
+        }
         public AutoMapperProfile()
         {
             CreateConsumerProfile();
             CreateUnitProfile();
             CreateEnergyConsumerProfile();
             CreateIssueProfile();
+            CreateIssueEventProfile();
         }
     }
 }

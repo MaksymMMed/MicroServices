@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ConsumerAPI.Controllers
 {
-    [Route("consumerapi/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UnitController : ControllerBase
     {

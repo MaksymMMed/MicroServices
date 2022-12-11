@@ -17,6 +17,7 @@ namespace Infrastructure.Persistense
         }
         public DbSet<Team> Team { get; set; }
         public DbSet<Issue> Issue { get; set; }
+        public DbSet<Unit> Unit { get; set; }
         public DbSet<Employee> Employee { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken)

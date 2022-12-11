@@ -1,12 +1,14 @@
 using BLL.Services.Interfaces;
 using BLL.Services.Realization;
+using BLL.Transit;
 using DAL;
 using DAL.Repositories.Interfaces;
 using DAL.Repositories.Realization;
 using DAL.Repositories.UnitOfWork;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.OpenApi.Models;
+using Rabbit.Producer;
 using System.Text.Json.Serialization;
 
 public class Startup
@@ -22,6 +24,19 @@ public class Startup
                     options.UseSqlServer(Configuration.GetConnectionString("UnitContext")));
 
         Services.AddMemoryCache();
+
+
+        
+
+        Services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+        });
+
+
+        
+
+        Services.AddTransient<IMessageProducer,RabbitMQProducer>();
 
         Services.AddTransient<IConsumerRepository, ConsumerRepository>();
         Services.AddTransient<IUnitRepository, UnitRepository>();
@@ -47,10 +62,25 @@ public class Startup
         });
         Services.AddHttpClient();
         Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        Services.AddMassTransit(config => {
+
+            config.AddConsumer<MessageConsumer>();
+
+            config.UsingRabbitMq((ctx, cfg) => {
+                cfg.Host("amqp://guest:guest@localhost:5672");
+                cfg.ReceiveEndpoint("Queue", c => {
+                    c.ConfigureConsumer<MessageConsumer>(ctx);
+                });
+            });
+        });
+        Services.AddMassTransitHostedService();
+
+        // General Configuration
+        Services.AddScoped<MessageConsumer>();
     }
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (env.IsDevelopment())
+        if (!env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();

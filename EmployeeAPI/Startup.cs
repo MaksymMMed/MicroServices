@@ -3,6 +3,7 @@ using Infrastructure.Persistense;
 using MediatR;
 using FluentValidation.AspNetCore;
 using Apllication.Teams.Queries.GetAllTeams;
+using Rabbit.Producer;
 
 namespace EmployeeAPI
 {
@@ -15,6 +16,7 @@ namespace EmployeeAPI
 
         public void ConfigureServices(IServiceCollection Services)
         {
+            Services.AddTransient<IMessageProducer,RabbitMQProducer>();
             Services.AddPersistence(Configuration);
             Services.AddControllers();
             Services.AddEndpointsApiExplorer();
@@ -22,7 +24,7 @@ namespace EmployeeAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "ConsumerCatalog.API",
+                    Title = "EmployeeCatalog.API",
                     Version = "v1"
                 });
 
@@ -38,7 +40,7 @@ namespace EmployeeAPI
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint(
                     "/swagger/v1/swagger.json",
-                    "ConsumerCatalog.API v1"));
+                    "EmployeeCatalog.API v1"));
             }
 
             app.UseHttpsRedirection();

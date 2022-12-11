@@ -1,4 +1,13 @@
-﻿namespace ConsumerAPI
+﻿using Application.EventBus.Events;
+using DAL;
+using DAL.Entities;
+using Microsoft.AspNetCore.Connections;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System.Diagnostics;
+using System.Text;
+
+namespace ConsumerAPI
 {
     public class Program
     {
