@@ -8,12 +8,13 @@ using DAL.Pagination;
 using DAL.Parameters;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ConsumerAPI.Controllers.Interfaces;
 
-namespace ConsumerAPI.Controllers
+namespace ConsumerAPI.Controllers.Realizations
 {
     [Route("[controller]")]
     [ApiController]
-    public class UnitController : ControllerBase
+    public class UnitController : ControllerBase, IUnitController
     {
         public UnitController(IUnitService unitService)
         {
@@ -85,7 +86,7 @@ namespace ConsumerAPI.Controllers
         {
             try
             {
-                 await unitService.InsertAsync(request);
+                await unitService.InsertAsync(request);
                 return Ok();
             }
             catch (Exception e)

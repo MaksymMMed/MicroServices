@@ -3,14 +3,13 @@ version: '3.4'
 services:
   gateway:
     image: ${DOCKER_REGISTRY-}gateway
-    environment:
     build:
       context: .
       dockerfile: Gateway/Dockerfile
     depends_on:
      - employeeapi
      - consumerapi
-     ports:
+    ports:
      - "8004:80"
      - "9004:443"
 

@@ -54,7 +54,7 @@ namespace DAL.Repositories.Realization
             var id = entity.GetType().GetProperty("Id").GetValue(entity);
             await DistributedCache.SetStringAsync(id.ToString(), JsonConvert.SerializeObject(entity), new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
             });
         }
 
@@ -64,7 +64,7 @@ namespace DAL.Repositories.Realization
             var id = entity.GetType().GetProperty("Id").GetValue(entity);
             await DistributedCache.SetStringAsync(id.ToString(), JsonConvert.SerializeObject(entity), new DistributedCacheEntryOptions
             {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(5)
+                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10)
             });
         }
         public virtual async Task DeleteAsync(int id)

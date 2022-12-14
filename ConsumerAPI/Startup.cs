@@ -7,6 +7,7 @@ using DAL.Repositories.Realization;
 using DAL.Repositories.UnitOfWork;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.OpenApi.Models;
 using Rabbit.Producer;
 using System.Text.Json.Serialization;
@@ -41,6 +42,10 @@ public class Startup
         Services.AddTransient<IUnitService, UnitService>();
         Services.AddTransient<IEnergyConsumeService, EnergyConsumeService>();
 
+
+
+        Services.AddScoped<IDistributedCache>();
+        
         Services.AddControllers().AddJsonOptions(x =>
                  x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
         Services.AddEndpointsApiExplorer();

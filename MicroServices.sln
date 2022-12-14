@@ -31,6 +31,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aggregator", "Aggregator\Ag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rabbit", "Rabbit\Rabbit.csproj", "{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{402EBE08-7003-44C1-A0D2-BD9A4160CE84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumerCatalogTests", "ConsumerCatalogTests\ConsumerCatalogTests.csproj", "{EDF807E2-7E2D-43DD-8FDE-CC393762A086}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,10 @@ Global
 		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDF807E2-7E2D-43DD-8FDE-CC393762A086}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDF807E2-7E2D-43DD-8FDE-CC393762A086}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDF807E2-7E2D-43DD-8FDE-CC393762A086}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDF807E2-7E2D-43DD-8FDE-CC393762A086}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -96,6 +104,7 @@ Global
 		{48E1343F-8824-4B2A-A925-0D759EE15EB2} = {A42E5D4F-C5C7-4353-85C2-714E58220017}
 		{CB011C69-89FE-47F0-ACEE-B8D2E19CE2BD} = {A42E5D4F-C5C7-4353-85C2-714E58220017}
 		{A1D9F6CB-59FF-4EC1-8033-E20B915406C9} = {A42E5D4F-C5C7-4353-85C2-714E58220017}
+		{EDF807E2-7E2D-43DD-8FDE-CC393762A086} = {402EBE08-7003-44C1-A0D2-BD9A4160CE84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AAB3E61-04A0-4198-B732-07AD97ED71D1}

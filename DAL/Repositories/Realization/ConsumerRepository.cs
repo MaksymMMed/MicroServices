@@ -4,6 +4,7 @@ using DAL.Pagination;
 using DAL.Parameters;
 using DAL.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace DAL.Repositories.Realization
 {
     public class ConsumerRepository : GenericRepository<Consumer>, IConsumerRepository
     {
-        public ConsumerRepository(UnitContext databaseContext, IMemoryCache memoryCache) : base(databaseContext, memoryCache)
+        public ConsumerRepository(UnitContext databaseContext, IDistributedCache memoryCache) : base(databaseContext, memoryCache)
         {
         }
 

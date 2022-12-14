@@ -9,12 +9,13 @@ using DAL.Repositories.Interfaces;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ConsumerAPI.Controllers.Interfaces;
 
-namespace ConsumerAPI.Controllers
+namespace ConsumerAPI.Controllers.Realizations
 {
     [Route("[controller]")]
     [ApiController]
-    public class ConsumerController : ControllerBase
+    public class ConsumerController : ControllerBase, IConsumerController
     {
         private readonly IConsumerService consumerService;
 
@@ -29,7 +30,8 @@ namespace ConsumerAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ConsumerResponse>> GetConsumerById(int id)
         {
-            try
+            return await consumerService.GetCompleteEntityById(id);
+            /*try
             {
                 return Ok(await consumerService.GetCompleteEntityById(id));
             }
@@ -40,7 +42,7 @@ namespace ConsumerAPI.Controllers
             catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new { e.Message });
-            }
+            }*/
         }
 
         /*[HttpGet]

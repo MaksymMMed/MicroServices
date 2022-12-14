@@ -6,12 +6,13 @@ using DAL.Parameters;
 using ConsumerAPI.Extensions;
 using DAL.Exceptions;
 using BLL.DTO.Request;
+using ConsumerAPI.Controllers.Interfaces;
 
-namespace ConsumerAPI.Controllers
+namespace ConsumerAPI.Controllers.Realizations
 {
     [Route("[controller]")]
     [ApiController]
-    public class energyConsumeController : ControllerBase
+    public class energyConsumeController : ControllerBase, IEnergyConsumeController
     {
         private readonly IEnergyConsumeService energyConsumeService;
 
